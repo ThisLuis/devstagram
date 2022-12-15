@@ -33,7 +33,11 @@
 						  
 						New Post
 					</a>
-					<a class="font-bold text-gray-600 text-sm" href="/">Hi: {{ auth()->user()->username }}</a>
+					<a 
+						class="font-bold text-gray-600 text-sm" 
+						href="{{ route('posts.index', auth()->user()->username) }}">
+						Hi: {{ auth()->user()->username }}
+					</a>
 					{{-- <a class="font-bold uppercase text-gray-600 text-sm" href="/logout">Log out</a> --}}
 					<form method="post" action="{{ route('logout') }}">
 						@csrf
@@ -47,7 +51,7 @@
 			{{-- Directiva para verificar si no se esta autenticado --}}
 			@guest
 				<nav>
-					<a class="font-bold uppercase text-gray-600 text-sm" href="/">Login</a>
+					<a class="font-bold uppercase text-gray-600 text-sm" href="/login">Login</a>
 					<a class="font-bold uppercase text-gray-600 text-sm" href="/register">Crear cuenta</a>
 				</nav>
 			@endguest

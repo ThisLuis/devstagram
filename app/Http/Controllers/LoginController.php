@@ -33,6 +33,6 @@ class LoginController extends Controller
         }
 
         // Si el usuario ingreso las credenciales correctas y esta registrado en la base de datos lo mandamos a su muro
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }

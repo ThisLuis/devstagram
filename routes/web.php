@@ -24,6 +24,12 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login');
+// Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+
 // AuthController
 Route::get('/register', [AuthController::class, 'index'])->name('register');
 Route::post('register', [AuthController::class, 'store'])->name('register');
@@ -35,7 +41,3 @@ Route::get('/recovery', [AuthController::class, 'recovery']);
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store'])->name('login');
-// Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
-Route::post('/logout', [LogoutController::class, 'store'])->name('logout');

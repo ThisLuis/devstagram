@@ -50,15 +50,7 @@ class AuthController extends Controller
     auth()->attempt($request->only('email', 'password'));
 
     // Redireccionar
-    return redirect('/muro
-    
-    
-    
-    
-    
-    
-    
-    ');
+    return redirect()->route('posts.index', auth()->user()->username);
 
     }
 
