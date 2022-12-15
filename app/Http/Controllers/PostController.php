@@ -25,5 +25,10 @@ class PostController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        dd('Creating post...');
+    }
+
 
 }

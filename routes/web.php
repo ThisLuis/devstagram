@@ -33,6 +33,7 @@ Route::get('/recovery', [AuthController::class, 'recovery']);
 
 //{user:username} -> No solo podemos acceder a username, sino a cualquier campo del model User
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
