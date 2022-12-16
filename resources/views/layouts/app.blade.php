@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	{{-- Stack lo que hace es reservar el espacio para poder agregar hojas de estilo y que no se requieran en todas las vistas --}}
+	@stack('styles')
     <title>Devstagram - @yield('title')</title>
 
     <!-- Fonts -->
