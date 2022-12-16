@@ -12,3 +12,14 @@ const dropzone = new Dropzone('#dropzone', {
     uploadMultiple: false,
 });
 
+dropzone.on("sending", function(file, xhr, formData) {
+    console.log(formData);
+})
+
+dropzone.on("success", function(file, response) {
+    console.log(response);
+})
+
+dropzone.on("removedfile", function() {
+    console.log('File deleted');
+})
