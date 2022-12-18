@@ -12,12 +12,14 @@ const dropzone = new Dropzone('#dropzone', {
     uploadMultiple: false,
 });
 
+
+console.log(dropzone);
 dropzone.on("sending", function(file, xhr, formData) {
     console.log(formData);
 })
 
 dropzone.on("success", function(file, response) {
-    console.log(response);
+    alert("La imagen se cargo correctamente");
 })
 
 dropzone.on("removedfile", function() {
