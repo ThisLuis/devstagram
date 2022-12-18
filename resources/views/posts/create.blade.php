@@ -8,8 +8,18 @@
     Create new post
 @endsection
 
+
+
 @section('content')
+    {{-- ALERTA --}}
+    <div class="alert-success flex self-center md:w-4/12 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Upload Image</strong>
+        <span class="block sm:inline">successfully, great</span>
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
+    </div>
+
     <div class="md:flex md:items-center">
+        
         <div class="md:w-1/2 px-10">
             <form action="{{ route('images.store') }}" method="post" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center" action="">
                 @csrf

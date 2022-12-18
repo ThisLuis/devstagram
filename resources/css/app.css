@@ -1,3 +1,7 @@
 @tailwind base;
-@tailwind componentes;
+@tailwind components;
 @tailwind utilities;
+
+.alert-success {
+    display: none;
+}

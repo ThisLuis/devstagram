@@ -19,7 +19,15 @@ dropzone.on("sending", function(file, xhr, formData) {
 })
 
 dropzone.on("success", function(file, response) {
-    alert("La imagen se cargo correctamente");
+    const alert = document.querySelector(".alert-success");
+    console.log(alert);
+    setTimeout(() => {
+        alert.classList.remove('alert-success');
+
+        setTimeout(() => {
+            alert.classList.add('alert-success');
+        }, 2000);
+    }, 100);
 })
 
 dropzone.on("removedfile", function() {
