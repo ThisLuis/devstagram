@@ -20,26 +20,38 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    // view toma como parametro el nombre de la vista que queremos mostrar
-    return view('home');
-});
 
+// AuthController
+Route::get('/register', [AuthController::class, 'index'])->name('register');
+Route::post('register', [AuthController::class, 'store'])->name('register');
+
+// LoginController
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
 // Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
-// AuthController
-Route::get('/register', [AuthController::class, 'index'])->name('register');
-Route::post('register', [AuthController::class, 'store'])->name('register');
+
+// Route::get('/', function () {
+//     // view toma como parametro el nombre de la vista que queremos mostrar
+//     return view('home');
+// });
+
+
+// PostController
+//{user:username} -> No solo podemos acceder a username, sino a cualquier campo del model User
+Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+
+
 Route::get('/signin', [AuthController::class, 'signin']);
 Route::get('/recovery', [AuthController::class, 'recovery']);
 
 
-//{user:username} -> No solo podemos acceder a username, sino a cualquier campo del model User
-Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
-Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+

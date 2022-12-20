@@ -13,12 +13,9 @@ const dropzone = new Dropzone('#dropzone', {
 });
 
 
-console.log(dropzone);
-dropzone.on("sending", function(file, xhr, formData) {
-    console.log(formData);
-})
 
 dropzone.on("success", function(file, response) {
+    document.querySelector('[name="image"]').value = response.image;
     const alert = document.querySelector(".alert-success");
     console.log(alert);
     setTimeout(() => {

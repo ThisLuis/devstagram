@@ -25,10 +25,23 @@ class PostController extends Controller
         ]);
     }
 
+    // create nos permite tener el formulario
     public function create()
     {
         return view('posts.create');
     }
+
+    // store nos permite guardar en la base de datos
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'required',
+        ]);
+    }
+
+
 
 
 }
