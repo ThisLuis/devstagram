@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Las relaciones son metodos que existen en los modelos
+    // Crear relacion
+
+    public function posts()
+    {
+        // relacion one to many - un usuario puede tener multiples posts
+        // hasManu recibe como parametro el nombre del modelo con el que haremos la relacion
+        return $this->hasMany(Post::class, 'user_id');
+    }
 }
