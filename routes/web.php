@@ -55,3 +55,4 @@ Route::get('/recovery', [AuthController::class, 'recovery']);
 
 
 
+// Route Model Bainding -> Un modelo esta asociado a una ruta

@@ -21,8 +21,14 @@ class PostController extends Controller
         // Dentro de attribute podemos encontrar la variable user
         // dd($user->username);
         // Toda la informacion del usuario se va guardando en user
+
+        // Obtener los posts
+
+        $posts = Post::where('user_id', $user->id)->get();
+        // dd($posts);
         return view('dashboard', [
             'user' => $user,
+            'posts' => $posts,
         ]);
     }
 
