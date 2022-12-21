@@ -24,7 +24,10 @@ class PostController extends Controller
 
         // Obtener los posts
 
-        $posts = Post::where('user_id', $user->id)->get();
+        // $posts = Post::where('user_id', $user->id)->get();
+        // Para paginar usamos paginate en lugar de get
+        $posts = Post::where('user_id', $user->id)->paginate(8);
+
         // dd($posts);
         return view('dashboard', [
             'user' => $user,
