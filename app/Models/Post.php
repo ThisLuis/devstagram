@@ -22,4 +22,10 @@ class Post extends Model
     {
         return $this->belongsTo((User::class))->select(['name', 'username']);
     }
+
+    // Debemos de nombrar el metodo user, de lo contrario si queremos nombrarlo author o con cualquier otro nombre, debemos de especificar el campo que funcionara como id, en este caso es user_id
+    // public function author()
+    // {
+    //     return $this->belongsTo((User::class, 'user_id'))->select(['name', 'username']);
+    // }
 }

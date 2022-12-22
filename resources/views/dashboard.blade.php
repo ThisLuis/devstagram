@@ -42,7 +42,8 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach ($posts as $post)
                 <div>
-                    <a href="">
+                    {{-- $post es como tal el post, laravel se encarga de mapearlo --}}
+                    <a href="{{ route('posts.show', [ 'post' => $post, 'user' => $user ]) }}">
                         <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagen del post {{ $post->title }}">
                     </a>
                 </div>
