@@ -53,8 +53,8 @@
 			{{-- Directiva para verificar si no se esta autenticado --}}
 			@guest
 				<nav>
-					<a class="font-bold uppercase text-gray-600 text-sm" href="/login">Login</a>
-					<a class="font-bold uppercase text-gray-600 text-sm" href="/register">Crear cuenta</a>
+					<a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('login') }}">Login</a>
+					<a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Crear cuenta</a>
 				</nav>
 			@endguest
 

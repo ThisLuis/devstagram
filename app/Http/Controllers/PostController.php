@@ -10,9 +10,10 @@ class PostController extends Controller
 {
 
     // Se debe de proteger las itneracciones del usuario
+    // El usuario debe de estar autenticado para acceder a cualquiera de estos metodos
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['show', 'index']);
     }
     
     // Route Model Bainding
