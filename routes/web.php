@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentaryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -46,6 +47,7 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:username}/post/{post}', [PostController::class, 'show'])->name('posts.show');
 
+Route::post('/{user:username}/post/{post}', [CommentaryController::class, 'store'])->name('commentaries.store');
 
 Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 

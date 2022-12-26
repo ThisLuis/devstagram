@@ -23,6 +23,12 @@ class Post extends Model
         return $this->belongsTo((User::class))->select(['name', 'username']);
     }
 
+    // Relacion: Un post tiene multiples comentarios
+    public function commentaries()
+    {
+        return $this->hasMany((Commentary::class));
+    }
+
     // Debemos de nombrar el metodo user, de lo contrario si queremos nombrarlo author o con cualquier otro nombre, debemos de especificar el campo que funcionara como id, en este caso es user_id
     // public function author()
     // {

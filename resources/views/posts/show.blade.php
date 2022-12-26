@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container mx-auto flex">
+    <div class="container mx-auto md:flex">
         <div class="md:w-1/2">
             <img src="{{ asset('uploads') . '/' . $post->image}}" alt="{{ $post->title }}">
 
@@ -30,21 +30,29 @@
 
                 @auth
                 <p class="text-xl font-bold text-center mb-4">Agrega un nuevo comentario</p>
-                <form action="">
+
+                @if(session('message'))
+                    <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('commentaries.store', ['post'=> $post, 'user' => $user ]) }}" >
+                    @csrf
                     <div class="mb-5">
-                        <label for="comment" class="mb-2 block uppercase text-gray-500 font-bold">
+                        <label for="commentary" class="mb-2 block uppercase text-gray-500 font-bold">
                             Comment
                         </label>
                         <textarea 
-                            name="comment" 
-                            id="comment" 
-                            placeholder="Type comment"
-                            class="border p-3 w-full rounded-lg @error('') border-red-500 @enderror"
+                            name="commentary" 
+                            id="commentary" 
+                            placeholder="Type commentary"
+                            class="border p-3 w-full rounded-lg @error('commentary') border-red-500 @enderror"
                         >
                             
                         </textarea>
-                        @error('comment')
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center"></p>
+                        @error('commentary')
+                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                         @enderror
                     </div>
                     <input 
@@ -54,6 +62,23 @@
                     />
                 </form>
                 @endauth
+
+                <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
+                    @if ($post->commentaries->count())
+                        @foreach ($post->commentaries as $commentary)
+                            <div class="p-5 border-gray-300 border-b">
+                                <a href="{{ route('posts.index', $commentary->user) }}" class="font-bold">
+                                    {{ $commentary->user->username }}
+                                </a>
+                                <p>{{ $commentary->commentary }}</p>
+                                <p class="text-sm text-gray-500">{{ $commentary->created_at->diffForHumans() }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="p-10 text-center">No Hay comentarios aun</p>
+                    @endif
+                </div>
+
             </div>
         </div>
     </div>
