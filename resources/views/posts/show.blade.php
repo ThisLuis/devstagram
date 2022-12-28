@@ -28,7 +28,10 @@
             @auth
                 {{-- Comprobamos que el user_id sea igual al id del user --}}
                 @if($post->user_id === auth()->user()->id)
-                    <form>
+                    {{-- El navegador soporta unicamente g/p ms te permite otro tipo de peticiones como pueden ser put/patch o delete --}}
+                    <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                        @method('delete')
+                        @csrf
                         <input 
                             type="submit"
                             value="Elimiar Post"
