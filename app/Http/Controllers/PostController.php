@@ -90,7 +90,10 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        dd('eliminando', $post->id);
+        // Entre parentesis va el metodo que queremos ejecutar del policy, en este caso delete
+            $this->authorize('delete', $post);
+            $post->delete();
+            return redirect()->route('posts.index', auth()->user()->username);
     }
 
 }
