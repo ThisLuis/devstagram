@@ -24,12 +24,27 @@
                 </p>
             </div>
 
+            {{-- Verificamos que este autenticado --}}
+            @auth
+                {{-- Comprobamos que el user_id sea igual al id del user --}}
+                @if($post->user_id === auth()->user()->id)
+                    <form>
+                        <input 
+                            type="submit"
+                            value="Elimiar Post"
+                            class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer"
+                        />
+                    </form>
+                @endif
+            @endauth
+           
+
         </div>
         <div class="md:w-1/2 p-5">
             <div class="shadow bg-white p-5 mb-5">
 
                 @auth
-                <p class="text-xl font-bold text-center mb-4">Agrega un nuevo comentario</p>
+                <p class="text-xl font-bold text-center mb-4">Agregar un nuevo comentario</p>
 
                 @if(session('message'))
                     <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
