@@ -60,6 +60,8 @@ Route::get('/recovery', [AuthController::class, 'recovery']);
 // Route a las photos
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 
+Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
+
 
 
 

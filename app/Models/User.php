@@ -52,4 +52,9 @@ class User extends Authenticatable
         // hasManu recibe como parametro el nombre del modelo con el que haremos la relacion
         return $this->hasMany(Post::class, 'user_id');
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

@@ -36,6 +36,7 @@ class Post extends Model
 
     public function checkLike(User $user)
     {
+        // likes es el metodo de arriba, va a chechar en la tabla likes si es que en la columna user_id ya contiene el id del usuario
         return $this->likes->contains('user_id', $user->id);
     }
 
