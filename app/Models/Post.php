@@ -29,6 +29,16 @@ class Post extends Model
         return $this->hasMany((Commentary::class));
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLike(User $user)
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
+
     // Debemos de nombrar el metodo user, de lo contrario si queremos nombrarlo author o con cualquier otro nombre, debemos de especificar el campo que funcionara como id, en este caso es user_id
     // public function author()
     // {

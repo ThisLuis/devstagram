@@ -1,14 +1,15 @@
 <?php
 
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CommentaryController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CommentaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,9 @@ Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 
 Route::get('/signin', [AuthController::class, 'signin']);
 Route::get('/recovery', [AuthController::class, 'recovery']);
+
+// Route a las photos
+Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 
 
 
