@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -15,5 +16,18 @@ class ProfileController extends Controller
     public function index()
     {
         return view('perfil.index');
+    }
+
+    public function store(Request $request)
+    {
+        // Validar los datos
+
+        $request->request->add(['username' => Str::slug($request->username)]);
+
+        $this->validate($request, [
+            'username' => ['required', 'unique:users, username,'.auth()->user()->id, 'min:3', 'max:20', 'not_in:twitter'],
+        ]);
+
+        dd('guardado');
     }
 }
