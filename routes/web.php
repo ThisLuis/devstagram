@@ -10,6 +10,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CommentaryController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,15 @@ use App\Http\Controllers\CommentaryController;
 |
 */
 
+// Rutas para la edicion del perfil
+Route::get('/editar-perfil', [ProfileController::class, 'index'])->name('perfil.index');
+Route::post('/editar-perfil', [ProfileController::class, 'store'])->name('perfil.store');
+
+
 
 // AuthController
 Route::get('/register', [AuthController::class, 'index'])->name('register');
-Route::post('register', [AuthController::class, 'store'])->name('register');
+Route::post('/register', [AuthController::class, 'store'])->name('register');
 
 // LoginController
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -61,7 +67,6 @@ Route::get('/recovery', [AuthController::class, 'recovery']);
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
-
 
 
 
