@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CommentaryController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -23,6 +24,8 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', HomeController::class)->name('home');
 
 // Rutas para la edicion del perfil
 Route::get('/editar-perfil', [ProfileController::class, 'index'])->name('perfil.index');
