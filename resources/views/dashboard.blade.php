@@ -45,27 +45,32 @@
                 @auth
                 {{-- Comprobamos que el id del usuario que viene de request sea distinto al que esta autenticado --}}
                     @if($user->id !== auth()->user()->id)
-                        {{-- User es el usuario a seguir, no el autenticado --}}
-                        <form action="{{ route('users.follow', $user) }}" method="POST">
-                            @csrf
-                            <input 
-                                type="submit"
-                                class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                                value="Follow"
-                            />
+                    {{-- $user es la persona que estamos visitando su perfil --}}
+                    {{-- auth()->user: Es la persona que lo esta visitando --}}
+                        @if(!$user->following(auth()->user()))
+                            
+                            {{-- User es el usuario a seguir, no el autenticado --}}
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input 
+                                    type="submit"
+                                    class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    value="Follow"
+                                />
 
-                        </form>
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <input 
+                                    type="submit"
+                                    class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    value="Unfollow"
+                                />
 
-                        <form action="{{ route('users.unfollow', $user) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <input 
-                                type="submit"
-                                class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                                value="Unfollow"
-                            />
-
-                        </form>
+                            </form>
+                        @endif
                     @endif
                 @endauth
             </div>
