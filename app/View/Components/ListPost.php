@@ -6,14 +6,18 @@ use Illuminate\View\Component;
 
 class ListPost extends Component
 {
+
+    public $posts;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+
+    // El constructor sera la informacion que se le pasara a un componente
+    public function __construct($posts)
     {
-        //
+        $this->posts = $posts;
     }
 
     /**

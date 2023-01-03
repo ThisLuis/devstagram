@@ -1,3 +1,13 @@
 php artisan make:component ListPost
 -app/view/components/ListPost.php: Aqui obtiene la informacion que usaremos en el template .blade
 -resources/views/components/list-post-blade-php: Aqui solo mostramos la inforamcion
+
+SLOTS: 
+
+De esta manera no soporta slots
+<x-list-post/>
+
+De esta manera lo que pongamos dentro es un slot
+<x-list-post>
+    <h1>Mostrando posts desde slot</h1>
+</x-list-post>
