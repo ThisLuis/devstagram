@@ -16,6 +16,8 @@
                     $message = "Hola mundo desde una variable";
                 @endphp --}}
 
+                    
+                    {{-- Cuando mandamos llamar este livewire, se ejecuta automaticamente la function mount() --}}
                     <livewire:like-post :post="$post"/>
 
                     {{-- Por ahora comentamos --}}
