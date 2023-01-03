@@ -29,7 +29,7 @@ class PostController extends Controller
         // $posts = Post::where('user_id', $user->id)->get();
         // Para paginar usamos paginate en lugar de get
         // Este tipo de consulta si se puede paginar - en dashboard $user->posts no se puede paginar
-        $posts = Post::where('user_id', $user->id)->paginate(8);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(8);
 
         // dd($posts);
         return view('dashboard', [

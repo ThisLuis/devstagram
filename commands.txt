@@ -1,0 +1,3 @@
+php artisan make:component ListPost
+-app/view/components/ListPost.php: Aqui obtiene la informacion que usaremos en el template .blade
+-resources/views/components/list-post-blade-php: Aqui solo mostramos la inforamcion
