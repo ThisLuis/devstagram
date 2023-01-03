@@ -9,8 +9,10 @@
         <div class="md:w-1/2">
             <img src="{{ asset('uploads') . '/' . $post->image}}" alt="{{ $post->title }}">
 
-            <div class="p-3 flex items-center gap-2">
+            <div class="p-3 flex items-center gap-4">
                 @auth()
+
+                    <livewire:like-post />
 
                     @if($post->checkLike(auth()->user()))
                         <form method="POST" action="{{ route('posts.likes.destroy', $post) }}">

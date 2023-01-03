@@ -6,6 +6,7 @@
 	{{-- Stack lo que hace es reservar el espacio para poder agregar hojas de estilo y que no se requieran en todas las vistas --}}
 	@stack('styles')
     <title>Devstagram - @yield('title')</title>
+	@livewireStyles
 
     <!-- Fonts -->
     @vite('resources/css/app.css')
@@ -71,6 +72,8 @@
 	<footer class="text-center p-5 text-gray-500 font-bold uppercase">
 		Devstagram - Todos los derechos reservados {{ now()->year }}
 	</footer>
+
+	@livewireScripts
 
 </body>
 </html>

@@ -11,3 +11,11 @@ De esta manera lo que pongamos dentro es un slot
 <x-list-post>
     <h1>Mostrando posts desde slot</h1>
 </x-list-post>
+
+
+INSTALAR LIVEWIRE:
+composer require livewire/livewire
+
+Esto nos crea dos archivos
+-app/Http/Livewire/LikePost.php - Este archivo tiene una funcionalidad parecida a la de componentes, podemos consultar la base de datos o hacer validaciones
+-resources/views/livewire/like-post.blade.php - Este es el archivo de presentacion
