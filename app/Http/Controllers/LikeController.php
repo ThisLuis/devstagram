@@ -16,6 +16,7 @@ class LikeController extends Controller
 
         return back();
     }
+    
 
     public function destroy(Request $request, Post $post)
     {
